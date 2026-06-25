@@ -107,7 +107,7 @@ export function UploadZone({ image, isAnalyzing, onImageReady, onReset }: Upload
   };
 
   return (
-    <section className="upload-zone" aria-label="Plant photo upload">
+    <section className="upload-zone" aria-label="Introduce your plant">
       <div
         className={`upload-drop ${isDragging ? "dragging" : ""}`}
         onDragOver={(event) => {
@@ -118,18 +118,18 @@ export function UploadZone({ image, isAnalyzing, onImageReady, onReset }: Upload
         onDrop={handleDrop}
       >
         {image ? (
-          <img className="preview" src={image} alt="Selected plant preview" />
+          <img className="preview" src={image} alt="Your plant" />
         ) : (
           <div>
-            <p className="section-title">Add a plant photo</p>
-            <p className="muted">Use a clear image of a single plant from your camera or gallery.</p>
+            <p className="section-title">Introduce your plant</p>
+            <p className="muted">Share a clear photo so your plant can say hello.</p>
           </div>
         )}
       </div>
 
       {error ? (
         <div className="alert" role="alert">
-          <strong>Upload issue</strong>
+          <strong>Photo trouble</strong>
           <p>{error}</p>
         </div>
       ) : null}
@@ -145,7 +145,7 @@ export function UploadZone({ image, isAnalyzing, onImageReady, onReset }: Upload
 
       <div className="actions">
         <button className="button primary" type="button" onClick={() => inputRef.current?.click()}>
-          {image ? "Choose another photo" : "Choose photo"}
+          {image ? "Meet a different plant" : "Choose a photo"}
         </button>
         {image ? (
           <button className="button" type="button" onClick={onReset} disabled={isAnalyzing || isProcessing}>
@@ -155,7 +155,7 @@ export function UploadZone({ image, isAnalyzing, onImageReady, onReset }: Upload
         {(isProcessing || isAnalyzing) && (
           <span className="badge" aria-live="polite">
             <span className="spinner" aria-hidden="true" />
-            {isProcessing ? "Preparing image" : "Analyzing plant"}
+            {isProcessing ? "Getting ready..." : "Waking your plant up..."}
           </span>
         )}
       </div>

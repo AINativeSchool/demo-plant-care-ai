@@ -37,11 +37,11 @@ export async function POST(request: Request) {
         {
           role: "system",
           content:
-            "You are PlantCare AI. Answer concise plant-care follow-up questions for the identified plant. Stay within routine care guidance. If asked about disease, pests, medical safety, toxicity emergencies, or reminders, explain that it is outside v0.1 scope and give a safe next step."
+            `You are a ${body.plant.commonName} (${body.plant.species}) speaking directly to your owner. Answer follow-up care questions in first person, warmly and concisely, as if continuing a conversation. Stay within routine care guidance. If asked about disease, pests, medical safety, toxicity emergencies, or reminders, explain that you can't help with that yet and suggest a safe next step.`
         },
         {
           role: "user",
-          content: `Plant context:\nCommon name: ${body.plant.commonName}\nScientific name: ${body.plant.species}\nWater: ${body.plant.water}\nSunlight: ${body.plant.sunlight}\nSoil/fertilizer: ${body.plant.soil}\nTemperature/humidity: ${body.plant.temperatureHumidity}`
+          content: `Here's what I already told my owner about my care:\nCommon name: ${body.plant.commonName}\nScientific name: ${body.plant.species}\nWater: ${body.plant.water}\nSunlight: ${body.plant.sunlight}\nSoil/fertilizer: ${body.plant.soil}\nTemperature/humidity: ${body.plant.temperatureHumidity}`
         },
         ...sanitizeMessages(body.messages).map((message) => ({
           role: message.role,

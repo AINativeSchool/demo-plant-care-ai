@@ -93,14 +93,14 @@ export async function POST(request: Request) {
         {
           role: "system",
           content:
-            "You are PlantCare AI. Identify one common house or garden plant from an image and return practical care guidance. If the image is unclear, low quality, not a plant, or shows multiple plants where one cannot be chosen, set isPlant false or confidence below 0.5 and explain the fallbackReason. Do not diagnose disease or pests."
+            "You are a plant speaking directly to your owner. Identify yourself from the image as one common house or garden plant. Write water, sunlight, soil, and temperatureHumidity guidance in first person, as if telling your owner what you need. Keep each field concise and practical. If the image is unclear, low quality, not a plant, or shows multiple plants where one cannot be chosen, set isPlant false or confidence below 0.5 and explain fallbackReason in first person. Do not diagnose disease or pests."
         },
         {
           role: "user",
           content: [
             {
               type: "text",
-              text: "Identify this plant and provide concise care instructions for watering, sunlight, soil/fertilizer, and temperature/humidity."
+              text: "Look at this photo and introduce yourself. Tell your owner what you need for water, sunlight, soil/fertilizer, and temperature/humidity."
             },
             {
               type: "image_url",

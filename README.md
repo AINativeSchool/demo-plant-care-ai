@@ -2,6 +2,10 @@
 
 PlantCare AI is a small Next.js web app that identifies a plant from a user-supplied image and returns tailored care instructions for water, sunlight, soil/fertilizer, and temperature/humidity.
 
+## Preview
+
+![Talk to your plant — light mode](docs/preview-light.jpeg)
+
 ## Tech stack
 
 - Next.js App Router with TypeScript

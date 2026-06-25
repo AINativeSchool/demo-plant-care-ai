@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Crimson_Pro, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
+import { Logo } from "./components/Logo";
 import { ThemeToggle } from "./components/ThemeToggle";
 
 const bodyFont = IBM_Plex_Sans({
@@ -17,8 +18,11 @@ const headingFont = Crimson_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "PlantCare AI",
-  description: "Identify plants from photos and get tailored care guidance."
+  title: "Talk to your plant",
+  description: "Upload a photo, hear what your plant needs, and keep the conversation going.",
+  icons: {
+    icon: "/icon.svg"
+  }
 };
 
 // RootLayout provides the shared Blend shell and font variables.
@@ -32,9 +36,9 @@ export default function RootLayout({
       <body style={{ fontFamily: "var(--font-body)" }}>
         <main className="shell">
           <header className="topbar">
-            <div className="brand" aria-label="PlantCare AI">
-              <strong>PlantCare AI</strong>
-              <span>Quiet guidance for living things</span>
+            <div className="brand" aria-label="Talk to your plant">
+              <Logo size={44} />
+              <strong>Talk to your plant</strong>
             </div>
             <ThemeToggle />
           </header>
