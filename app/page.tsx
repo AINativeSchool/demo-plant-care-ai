@@ -35,7 +35,7 @@ export default function HomePage() {
         },
         body: JSON.stringify({ image: nextImage })
       });
-      const payload = (await response.json()) as PlantIdentification | { error?: string };
+      const payload = (await response.json()) as PlantIdentification | { error: string };
 
       if (!response.ok || "error" in payload) {
         throw new Error("error" in payload ? payload.error : "Your plant couldn't get through. Try again.");

@@ -35,6 +35,53 @@ PlantCare AI is a small Next.js web app that identifies a plant from a user-supp
 
 4. Open the local URL printed by Next.js and upload a clear image of one plant.
 
+## Deployment
+
+PlantCare AI is a standard Next.js app with server-side API routes. The only required secret is `OPENAI_API_KEY`.
+
+### Verify the build
+
+Before deploying, confirm the production build succeeds locally:
+
+```bash
+npm run build
+npm start
+```
+
+### Vercel (recommended)
+
+This project is designed for a Vercel-style deployment: the UI and `/api/*` routes ship as one app, and the OpenAI key stays on the server.
+
+1. Push the repo to GitHub, GitLab, or Bitbucket.
+2. Import the project in [Vercel](https://vercel.com/new).
+3. Add an environment variable:
+   - `OPENAI_API_KEY` — your OpenAI API key
+4. Deploy. Vercel runs `npm run build` and serves the app automatically.
+
+Redeploy after changing environment variables.
+
+### Other Node hosts
+
+Any host that can run Next.js works (Railway, Render, Fly.io, a VPS, etc.):
+
+1. Set `OPENAI_API_KEY` in the host's environment.
+2. Run `npm install`, `npm run build`, and `npm start`.
+3. Expose the port your host expects (Next.js defaults to `3000`).
+
+Use Node 18 or later.
+
+### Post-deploy checks
+
+- Open the site and upload a clear plant photo.
+- Confirm identification returns care instructions.
+- Try a follow-up question to verify `/api/followup`.
+- If requests fail immediately, check that `OPENAI_API_KEY` is set in the deployment environment.
+
+### Notes
+
+- There is no authentication in v0.1; anyone with the URL can use the app and consume OpenAI quota.
+- API routes call OpenAI on each identification and follow-up; monitor usage and set billing limits in your OpenAI account.
+
 ## How it works
 
 - The browser converts HEIC images to JPEG when needed and downscales large images before upload.
