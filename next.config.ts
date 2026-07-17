@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
+import { normalizeMountPath } from "./lib/mount-path";
 
-/** Subpath mount when the app is not served from domain root. */
-const mountPath = "/plant-ai";
+const mountPath = normalizeMountPath(process.env.NEXT_PUBLIC_BASE_PATH);
 
 const nextConfig: NextConfig = {
   ...(mountPath

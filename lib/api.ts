@@ -1,10 +1,8 @@
+import { normalizeMountPath } from "./mount-path";
+
 /** Returns the configured app basePath with no trailing slash. */
 function getBasePath(): string {
-  const raw = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  if (!raw || raw === "/") {
-    return "";
-  }
-  return raw.endsWith("/") ? raw.slice(0, -1) : raw;
+  return normalizeMountPath(process.env.NEXT_PUBLIC_BASE_PATH);
 }
 
 /** Builds an absolute in-app URL for an API route, honoring basePath when set. */
