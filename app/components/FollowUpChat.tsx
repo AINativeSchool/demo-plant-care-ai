@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { apiFetch } from "@/lib/api";
 import type { ChatMessage, PlantIdentification } from "@/lib/types";
 
 type FollowUpChatProps = {
@@ -38,7 +39,7 @@ export function FollowUpChat({ plant }: FollowUpChatProps) {
     setIsSending(true);
 
     try {
-      const response = await fetch("/api/followup", {
+      const response = await apiFetch("/api/followup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

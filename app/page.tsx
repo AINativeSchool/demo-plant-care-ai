@@ -5,6 +5,7 @@ import { FallbackBanner } from "./components/FallbackBanner";
 import { FollowUpChat } from "./components/FollowUpChat";
 import { ResultCard } from "./components/ResultCard";
 import { UploadZone } from "./components/UploadZone";
+import { apiFetch } from "@/lib/api";
 import type { PlantIdentification } from "@/lib/types";
 
 // HomePage coordinates upload, AI identification, fallback handling, and follow-up chat.
@@ -28,7 +29,7 @@ export default function HomePage() {
     setIsAnalyzing(true);
 
     try {
-      const response = await fetch("/api/identify", {
+      const response = await apiFetch("/api/identify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
